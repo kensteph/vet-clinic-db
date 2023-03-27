@@ -24,7 +24,7 @@
 
 # 📖 Vit-Clinic <a name="about-project"></a>
 
-> Vit-Clinic is PostgreSQL database project that allows to store animals' information.
+> Vit-Clinic is a PostgreSQL database project that allows to store animals' information.
 
 ## 🛠 Built With <a name="built-with"></a>
 
