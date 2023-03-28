@@ -1,5 +1,6 @@
 /*Queries that provide answers to the questions from all projects.*/
 
+-- Part 1
 -- Find all animals whose name ends in "mon".
 	SELECT * FROM animals WHERE name LIKE '%mon';
 -- List the name of all animals born between 2016 and 2019.
@@ -16,3 +17,25 @@
 	SELECT * FROM animals WHERE name !='Gabumon';
 -- Find all animals with a weight between 10.4kg and 17.3kg (including the animals with the weights that equals precisely 10.4kg or 17.3kg)
 	SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
+
+-- Part 2
+-- Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made. 
+-- Then roll back the change and verify that the species columns went back to the state before the transaction.
+BEGIN;
+UPDATE animals SET species = 'unspecified';
+ROLLBACK;
+
+-- Inside a transaction:
+-- Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.
+-- Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
+-- Commit the transaction.
+-- Verify that change was made and persists after commit.
+BEGIN;
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+COMMIT;
+
+-- Now, take a deep breath and... Inside a transaction delete all records in the animals table, then roll back the transaction.
+BEGIN;
+DELETE FROM animals;
+ROLLBACK;
