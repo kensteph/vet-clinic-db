@@ -66,3 +66,6 @@ SELECT AVG(weight_kg) AS av_weight_kg FROM animals;
 
 -- Who escapes the most, neutered or not neutered animals?
 SELECT neutered,SUM(escape_attempts) total_attempts FROM animals GROUP BY neutered;
+
+-- What is the minimum and maximum weight of each type of animal?
+SELECT species type,MIN(weight_kg) AS min_weight_kg, MAX(weight_kg) max_weight_kg FROM animals GROUP BY species;
