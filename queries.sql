@@ -1,6 +1,6 @@
 /*Queries that provide answers to the questions from all projects.*/
 
--- Part 1
+-- ===================================== Part 1 =================================================================
 -- Find all animals whose name ends in "mon".
 	SELECT * FROM animals WHERE name LIKE '%mon';
 -- List the name of all animals born between 2016 and 2019.
@@ -18,7 +18,7 @@
 -- Find all animals with a weight between 10.4kg and 17.3kg (including the animals with the weights that equals precisely 10.4kg or 17.3kg)
 	SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
--- Part 2
+-- ====================================== Part 2 ==================================================================
 -- Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made. 
 -- Then roll back the change and verify that the species columns went back to the state before the transaction.
 BEGIN;
@@ -69,3 +69,6 @@ SELECT neutered,SUM(escape_attempts) total_attempts FROM animals GROUP BY neuter
 
 -- What is the minimum and maximum weight of each type of animal?
 SELECT species type,MIN(weight_kg) AS min_weight_kg, MAX(weight_kg) max_weight_kg FROM animals GROUP BY species;
+
+-- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+SELECT species type, AVG(escape_attempts) av_escape_attempts FROM animals WHERE EXTRACT(YEAR FROM date_of_birth) BETWEEN 1990 AND 2000 GROUP BY species;
