@@ -94,3 +94,6 @@ SELECT s.name,COUNT(a.id) nb_animals FROM animals a JOIN species s ON a.species_
 
 -- List all Digimon owned by Jennifer Orwell.
 SELECT * FROM animals a JOIN owners o ON a.owner_id = o.id AND o.full_name='Jennifer Orwell' JOIN species s ON s.id = a.species_id AND s.name='Digimon';
+
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT a.* FROM animals a JOIN owners o ON a.owner_id = o.id AND o.full_name='Dean Winchester' AND escape_attempts=0;
