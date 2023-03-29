@@ -88,3 +88,6 @@ SELECT * FROM animals a JOIN species s ON a.species_id = s.id AND s.name='Pokemo
 
 -- List all owners and their animals, remember to include those that don't own any animal.
 SELECT * FROM owners o LEFT JOIN animals a ON a.owner_id = o.id;
+
+-- How many animals are there per species?
+SELECT s.name,COUNT(a.id) nb_animals FROM animals a JOIN species s ON a.species_id = s.id GROUP BY s.name;
