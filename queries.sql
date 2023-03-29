@@ -85,3 +85,6 @@ SELECT a.* FROM animals a JOIN owners o ON a.owner_id = o.id and o.full_name='Me
 
 -- List of all animals that are pokemon (their type is Pokemon).
 SELECT * FROM animals a JOIN species s ON a.species_id = s.id AND s.name='Pokemon';
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT * FROM owners o LEFT JOIN animals a ON a.owner_id = o.id;
