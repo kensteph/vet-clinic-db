@@ -11,3 +11,13 @@ CREATE TABLE animals
 )
 -- Add a new column
 ALTER TABLE animals ADD COLUMN species varchar(100);
+
+-- Create a table named owners with the following columns:
+-- id: integer (set it as autoincremented PRIMARY KEY)
+-- full_name: string
+-- age: integer
+CREATE TABLE owners (
+	id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+	full_name varchar(100),
+	age int
+);
