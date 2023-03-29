@@ -97,3 +97,6 @@ SELECT * FROM animals a JOIN owners o ON a.owner_id = o.id AND o.full_name='Jenn
 
 -- List all animals owned by Dean Winchester that haven't tried to escape.
 SELECT a.* FROM animals a JOIN owners o ON a.owner_id = o.id AND o.full_name='Dean Winchester' AND escape_attempts=0;
+
+-- Who owns the most animals?
+SELECT full_name,COUNT(a.id) nb_animals FROM owners o LEFT JOIN animals a ON a.owner_id = o.id GROUP BY full_name ORDER BY COUNT(a.id) DESC LIMIT 1;
