@@ -82,3 +82,6 @@ SELECT species type, AVG(escape_attempts) av_escape_attempts FROM animals WHERE 
 
 -- What animals belong to Melody Pond?
 SELECT a.* FROM animals a JOIN owners o ON a.owner_id = o.id and o.full_name='Melody Pond';
+
+-- List of all animals that are pokemon (their type is Pokemon).
+SELECT * FROM animals a JOIN species s ON a.species_id = s.id AND s.name='Pokemon';
