@@ -61,5 +61,19 @@ CREATE TABLE vets (
 CREATE TABLE specializations (
 	vets_id int,
 	species_id int,
-	PRIMARY KEY (vets_id,species_id)
+	PRIMARY KEY (vets_id,species_id),
+	CONSTRAINT fk_vets FOREIGN KEY(vets_id) REFERENCES vets(id),
+	CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id)
+);
+
+-- There is a many-to-many relationship between the tables animals and vets: an animal can visit multiple vets and 
+-- one vet can be visited by multiple animals. Create a "join table" called visits to handle this relationship, 
+-- it should also keep track of the date of the visit.
+
+CREATE TABLE visits (
+	date_of_visit date,
+	animals_id int,
+	vets_id int,
+	CONSTRAINT fk_animals FOREIGN KEY(animals_id) REFERENCES animals(id),
+	CONSTRAINT fk_vets FOREIGN KEY(vets_id) REFERENCES vets(id)
 );
