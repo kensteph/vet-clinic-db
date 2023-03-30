@@ -104,5 +104,10 @@ SELECT full_name,COUNT(a.id) nb_animals FROM owners o LEFT JOIN animals a ON a.o
 -- ====================================== Part 4 ==================================================================
 
 -- Who was the last animal seen by William Tatcher?
-SELECT a.name last_animal_seen ,date_of_visit FROM animals a JOIN visits v ON a.id = v.animals_id JOIN vets vt ON vt.id = v.vets_id WHERE vt.name = 'William Tatcher' ORDER BY date_of_visit DESC LIMIT 1; 
+SELECT a.name last_animal_seen ,date_of_visit FROM animals a JOIN visits v ON a.id = v.animals_id JOIN vets vt ON vt.id = v.vets_id 
+WHERE vt.name = 'William Tatcher' ORDER BY date_of_visit DESC LIMIT 1; 
+
+-- How many different animals did Stephanie Mendez see?
+SELECT COUNT(DISTINCT(v.animals_id)) total_seen FROM animals a JOIN visits v ON a.id = v.animals_id JOIN vets vt ON vt.id = v.vets_id 
+WHERE vt.name = 'Stephanie Mendez' GROUP BY vt.name;
 
