@@ -129,3 +129,8 @@ WHERE vt.name = 'Maisy Smith' ORDER BY date_of_visit  LIMIT 1;
 -- Details for most recent visit: animal information, vet information, and date of visit.
 SELECT a.name most_recent_visited_animal,vt.name vet_name,date_of_visit FROM animals a JOIN visits v ON a.id = v.animals_id JOIN vets vt ON vt.id = v.vets_id 
 ORDER BY date_of_visit DESC LIMIT 1; 
+
+-- How many visits were with a vet that did not specialize in that animal's species?
+SELECT COUNT(*) nb_visit_not_specialized FROM (SELECT vt.name,a.name animal_visited, sp.species_id vet_specialities,a.species_id animal_species,date_of_visit FROM animals a 
+JOIN visits v ON a.id = v.animals_id JOIN vets vt ON vt.id = v.vets_id 
+LEFT JOIN specializations sp ON sp.vets_id=v.vets_id WHERE sp.species_id != a.species_id OR sp.species_id IS NULL) visitNonSpecialized;
