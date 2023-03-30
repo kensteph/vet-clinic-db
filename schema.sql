@@ -40,3 +40,16 @@ ALTER TABLE animals ADD COLUMN species_id int ;
 ALTER TABLE animals ADD CONSTRAINT fk_species FOREIGN KEY (species_id) REFERENCES species(id);
 ALTER TABLE animals ADD COLUMN owner_id int;
 ALTER TABLE animals ADD CONSTRAINT fk_owners FOREIGN KEY (owner_id) REFERENCES owners(id);
+
+-- Create a table named vets with the following columns:
+-- id: integer (set it as autoincremented PRIMARY KEY)
+-- name: string
+-- age: integer
+-- date_of_graduation: date
+
+CREATE TABLE vets (
+	id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+	name varchar(100),
+	age int,
+	date_of_graduation date
+);
