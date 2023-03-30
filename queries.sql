@@ -111,3 +111,5 @@ WHERE vt.name = 'William Tatcher' ORDER BY date_of_visit DESC LIMIT 1;
 SELECT COUNT(DISTINCT(v.animals_id)) total_seen FROM animals a JOIN visits v ON a.id = v.animals_id JOIN vets vt ON vt.id = v.vets_id 
 WHERE vt.name = 'Stephanie Mendez' GROUP BY vt.name;
 
+-- List all vets and their specialties, including vets with no specialties.
+SELECT v.name,sp.name specialties FROM vets v LEFT JOIN specializations s ON v.id = s.vets_id LEFT JOIN species sp ON sp.id = s.species_id;
