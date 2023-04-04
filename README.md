@@ -1,5 +1,7 @@
 <a name="readme-top"></a>
 <!-- TABLE OF CONTENTS -->
+<img src="./Screenshots/ER Diagram.png" alt="Clinic diagram" width="1000px" />
+<br>
 
 # 📗 Table of Contents
 
